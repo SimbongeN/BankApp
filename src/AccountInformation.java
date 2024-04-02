@@ -17,7 +17,8 @@ public class AccountInformation{
 
     private int AccountNumber;
     private double balance;
-    //private String userName;
+
+    //exapmle of association
     userInformation CurrentUser;
 
     //deflaut constractor accepts userInformation class as an argument 
