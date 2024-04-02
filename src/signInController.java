@@ -144,4 +144,13 @@ public class signInController {
 
     }
 
+    //method to retrieve userPassword 
+    public String forgotPassword_button(String email) throws ClassNotFoundException, SQLException{
+        DBconnection newCon = new DBconnection();
+        String sql = " Select userPassword from userinformation where userEmail = '"+email+"'";
+        ResultSet password = newCon.getUserInfor(sql);
+        String passwordToString = String.valueOf(password);
+        return passwordToString;
+    }
+
 }
