@@ -22,7 +22,7 @@ BankApp is a mobile application that simulates a real banking system. The applic
 
 ### Sign in and Sign up pages
 ![picture of application home page](App_pictures/login.png)
-![picture of application home page](App_pictures/signUp.png)
+![picture of application home page](App_pictures/SignUp.png)
 
 ### Home and Transaction Pages
 ![picture of application adding task page](App_pictures/home.png)
