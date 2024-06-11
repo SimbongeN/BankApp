@@ -12,6 +12,18 @@
         "c:\\Users\\Student\\OneDrive\\Documents\\openjfx-21.0.1_windows-x64_bin-sdk\\javafx-sdk-21.0.1\\lib\\javafx.swing.jar",
         "c:\\Users\\Student\\OneDrive\\Documents\\openjfx-21.0.1_windows-x64_bin-sdk\\javafx-sdk-21.0.1\\lib\\javafx.web.jar",
         "c:\\Users\\Student\\OneDrive\\Documents\\openjfx-21.0.1_windows-x64_bin-sdk\\javafx-sdk-21.0.1\\lib\\javafx-swt.jar",
-        "c:\\Program Files (x86)\\MySQL\\mysql-connector-j-8.2.0\\mysql-connector-j-8.2.0.jar"
+        "c:\\Program Files (x86)\\MySQL\\mysql-connector-j-8.2.0\\mysql-connector-j-8.2.0.jar",
+        "c:\\Users\\Student\\Downloads\\jar_files (1)\\commons-io-2.7.jar",
+        "c:\\Users\\Student\\Downloads\\jar_files (1)\\gson-2.8.7.jar",
+        "c:\\Users\\Student\\Downloads\\jar_files (1)\\java-sdk-1.0.0.jar",
+        "c:\\Users\\Student\\Downloads\\java-sdk-1.0.0.jar"
+    ],
+
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-21",
+            "path": "C:\\Program Files\\Java\\jdk-21",
+            "default": true
+        }
     ]
 }

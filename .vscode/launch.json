@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "text",
+            "request": "launch",
+            "mainClass": "test.text",
+            "projectName": "BankApp_8dd5ed0b"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
