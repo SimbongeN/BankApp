@@ -1,6 +1,6 @@
-# BankApp: A JavaFX Banking System
+# EAZEBANK: A JavaFX Banking System
 
-BankApp is an innovative mobile application designed to emulate the functionalities of a real-world banking system. Developed in Java, it features a user-friendly interface crafted with JavaFX, ensuring seamless user interactions. The application establishes secure database connections using JDBC and stores data in a MySQL database, providing a stable and reliable backend.
+EAZEBANK is an innovative mobile application designed to emulate the functionalities of a real-world banking system. Developed in Java, it features a user-friendly interface crafted with JavaFX, ensuring seamless user interactions. The application establishes secure database connections using JDBC and stores data in a MySQL database, providing a stable and reliable backend.
 
 A key focus of the project was to implement robust user authentication mechanisms. Users can confidently log in with their credentials, knowing their data is protected. The project was also an educational journey into database management and the critical role of security in financial software.
 
