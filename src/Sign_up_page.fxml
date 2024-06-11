@@ -63,21 +63,13 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <RadioButton fx:id="TnC_RadioBution" layoutX="24.0" layoutY="366.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="111.0" text="I agree with ">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></RadioButton>
-            <Button layoutX="135.0" layoutY="364.0" minHeight="21.0" mnemonicParsing="false" onAction="#Display_TnC_infor" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: transparent; -fx-alignment: left;" text="Terms &amp; Condition" textFill="WHITE" underline="true">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
             <Button layoutX="210.0" layoutY="531.0" mnemonicParsing="false" onAction="#signIn_Button_redirect" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: transparent; -fx-alignment: left;" text="Sign In " textFill="WHITE" underline="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Label fx:id="ErrorMassage_label" layoutX="41.0" layoutY="467.0" prefHeight="26.0" prefWidth="245.0" textFill="WHITE">
+            <Label fx:id="ErrorMassage_label" layoutX="19.0" layoutY="455.0" prefHeight="38.0" prefWidth="299.0" textFill="WHITE">
                <font>
-                  <Font size="17.0" />
+                  <Font size="15.0" />
                </font>
             </Label>
             <PasswordField fx:id="password_input" layoutX="25.0" layoutY="317.0" prefHeight="40.0" prefWidth="267.0" promptText="PASSWORD" style="-fx-background-color: white; -fx-background-radius: 10px;" />

@@ -9,7 +9,6 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +25,7 @@ public class history_Controller implements Initializable{
 
     private static AccountInformation userAcc;
     private static userInformation userInfo;
+    
     //get userAccount information
     public static void getUserAccount(userInformation userInformation,AccountInformation getuserAcc){
         userAcc = getuserAcc;
@@ -213,8 +213,7 @@ public class history_Controller implements Initializable{
 
             //get rid of the remaing tokens
             token.nextToken();
-            token.nextToken();
-            
+            token.nextToken();   
         }
     }
 

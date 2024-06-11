@@ -12,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -20,9 +19,6 @@ public class SignUpController {
 
     @FXML // fx:id="ErrorMassage_label"
     private Label ErrorMassage_label; // Value injected by FXMLLoader
-
-    @FXML // fx:id="TnC_RadioBution"
-    private RadioButton TnC_RadioBution; // Value injected by FXMLLoader
 
     @FXML // fx:id="email_input"
     private TextField email_input; // Value injected by FXMLLoader
@@ -33,10 +29,7 @@ public class SignUpController {
     @FXML // fx:id="password_input"
     private PasswordField password_input; // Value injected by FXMLLoader
 
-    @FXML
-    void Display_TnC_infor(ActionEvent event) {
-
-    }
+    public static String btnClicked, SaltValue;
 
     @FXML
     void signIn_Button_redirect(ActionEvent event) throws IOException{
@@ -56,6 +49,10 @@ public class SignUpController {
         String name = name_Input.getText();
         String email = email_input.getText();
         String password = password_input.getText();
+        EncryptionPassword encrypt = new EncryptionPassword(password); //apply hashing and salting algorithm
+        SaltValue = encrypt.getSalt(); //set the saltValue
+         
+        password = encrypt.getEncryptPassword();
 
         //initial balance given to user for creating account
         double balance = 50;
@@ -75,11 +72,17 @@ public class SignUpController {
             //send userInformation
             home_Controller.getUserAcc(newUser,newAccount);
             
-            //save information to database
-            savetoDatabase(newUser,newAccount);
+            // send user information to verification controller
+            verificationController.setUserInfo(newUser,newAccount);
+            // savetoDatabase(newUser,newAccount);
+
+            //grent access send btnclicekd information
+            btnClicked = "SignUpBtn";
+            verificationController.setBtnClicked(btnClicked);
+            verificationController.setVerificationCode(email);
 
             //switch to home page
-            Parent root = FXMLLoader.load(getClass().getResource("home_page.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("verification.fxml"));
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -110,7 +113,7 @@ public class SignUpController {
     }
 
     //method to save user to database
-    public void savetoDatabase(userInformation newUser, AccountInformation userAcc) throws IllegalArgumentException{
+    public static void savetoDatabase(userInformation newUser, AccountInformation userAcc,String SaltValue) throws IllegalArgumentException{
 
         String userName = newUser.getName();
         String userEmail = newUser.getEmail();
@@ -126,9 +129,11 @@ public class SignUpController {
             DBconnection createCon = new DBconnection();
             ResultSet rs = createCon.getUserInfor(sql1);
             int IdCount2 = 0;
-            while(rs.next()){    
-                IdCount2 = Integer.parseInt(rs.getString(1));
-                System.out.println(IdCount2);
+            while(rs.next()){   
+                try{
+                    IdCount2 = Integer.parseInt(rs.getString(1));
+                }catch(NumberFormatException e){
+                }
             }
             createCon.closeConnection();
             IdCount = IdCount2+1;
@@ -136,7 +141,7 @@ public class SignUpController {
             String sql = "INSERT INTO `bankapp_database`.`account_information` (`userName`, `AccNo`, `acc_balance`)" + " VALUES "+"('" + userName + "','" +userAccoNo +"','" + 50 +"')";
             createCon.updateDB(sql);
 
-            sql = "INSERT INTO `bankapp_database`.`userinformation` (`userID`, `userName`, `userEmail`, `userAccNo`, `userPassword`) VALUES " + "('" + IdCount +"', '"+ userName +"', '"+ userEmail +"', '"+ userAccoNo +"', '"+ userPassword +"');";
+            sql = "INSERT INTO `bankapp_database`.`userinformation` (`userID`, `userName`, `userEmail`, `userAccNo`, `userPassword`,`saltValue`) VALUES " + "('" + IdCount +"', '"+ userName +"', '"+ userEmail +"', '"+ userAccoNo +"', '"+ userPassword +"', '"+SaltValue+"');";
             createCon.updateDB(sql);
 
             
@@ -148,7 +153,7 @@ public class SignUpController {
         } catch (Exception e) {
 
             e.printStackTrace();
-            throw new IllegalAccessError(); 
+            //throw new IllegalAccessError(); 
         }
 
     }

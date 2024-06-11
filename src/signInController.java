@@ -12,7 +12,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,12 +26,19 @@ public class signInController {
     @FXML // fx:id="passowrdInput"
     private PasswordField passowrdInput; // Value injected by FXMLLoader
 
-    @FXML // fx:id="rememberBtn"
-    private RadioButton rememberBtn; // Value injected by FXMLLoader
+    public static String btnClicked;  
 
     @FXML
-    void forgotPassword_button(ActionEvent event) {
-
+    void forgotPassword_button(ActionEvent event) throws IOException {
+        //set btnClicked to forgotBtn
+        btnClicked = "forgotBtn";
+        verificationController.setBtnClicked(btnClicked);
+        //switch to sign up page
+        Parent root = FXMLLoader.load(getClass().getResource("PasswordRecovery.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -49,9 +55,25 @@ public class signInController {
             
             //user Authentication process
             //checking userPassword 
-            String sql = " Select userPassword from userinformation where userEmail = '"+userEmail+"'";
+            String sql = " Select saltValue from userinformation where userEmail = '"+userEmail+"'";
             DBconnection createConnection = new DBconnection();
             ResultSet rs = createConnection.getUserInfor(sql);
+            String saltValue =null;
+            while(rs.next()){
+                String result = rs.getString(1);
+                saltValue = result;
+            }
+            rs.close();
+            createConnection.closeConnection();
+
+            //hash the userPasssword entered
+            EncryptionPassword checkEncryptionPassword = new EncryptionPassword(userPass,saltValue);
+            userPass = checkEncryptionPassword.getEncryptPassword();
+            System.out.println("this is user password "+userPass);
+
+            sql = " Select userPassword from userinformation where userEmail = '"+userEmail+"'";
+            createConnection = new DBconnection();
+            rs = createConnection.getUserInfor(sql);
             String password = null;
             while(rs.next()){
                 System.out.println(rs.getString(1));
@@ -110,7 +132,7 @@ public class signInController {
                 //send user information and user Account to home page 
                 home_Controller.getUserAcc(getUser, userAcc);
 
-                //grent access
+                //grent access send btnclicekd information
                 //switch to home page
                 Parent root = FXMLLoader.load(getClass().getResource("home_page.fxml"));
                 Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -128,8 +150,7 @@ public class signInController {
             ErrorMassage_Label.setText("Incorrect password or email"); 
             e.printStackTrace();
         }
-
-        
+  
     }
 
     @FXML
@@ -142,15 +163,6 @@ public class signInController {
         stage.setScene(scene);
         stage.show();
 
-    }
-
-    //method to retrieve userPassword 
-    public String forgotPassword_button(String email) throws ClassNotFoundException, SQLException{
-        DBconnection newCon = new DBconnection();
-        String sql = " Select userPassword from userinformation where userEmail = '"+email+"'";
-        ResultSet password = newCon.getUserInfor(sql);
-        String passwordToString = String.valueOf(password);
-        return passwordToString;
     }
 
 }

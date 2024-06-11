@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 import javafx.event.ActionEvent;
@@ -125,7 +126,8 @@ public class home_Controller implements Initializable{
         String balance_value = "R"+ home_Controller.userInfo.getBalance();
         String userName = home_Controller.userInfo.getName();
         String AccNo = String.valueOf(home_Controller.userInfo.getAccNumber());
-        int expireDate = home_Controller.userInfo.getAccNumber()%1000100;
+        Random randomNum = new Random();
+        int expireDate = randomNum.nextInt(1,12);
         String expireDateString = " ";
 
         if(expireDate <= 12){

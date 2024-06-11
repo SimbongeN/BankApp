@@ -1,6 +1,7 @@
 //import java.util.*;
 
 import java.sql.*;
+import java.util.Random;
 
 
 public class userInformation{
@@ -18,13 +19,11 @@ public class userInformation{
    }
    
    public userInformation(String name,String email,String password,double balance){
-      getId();
       setName(name);
       setPassword(password);
       setBalance(balance);
       setEmail(email);
       generateAccNumber(counter);
-      // IdCount++;
    }
    
    public void setName(String name){
@@ -58,7 +57,11 @@ public class userInformation{
    }
    
    public void generateAccNumber(int accNumber){
-      this.accNumber=accNumber+IdCount+1; 
+      Random randomNum = new Random();
+      int genRandomNum = randomNum.nextInt(1000000, 9999999);
+      if(!getId(genRandomNum))
+         this.accNumber=genRandomNum; 
+      System.err.println(this.accNumber);
    }
 
    public void setAccNumber(int accNumber){
@@ -103,23 +106,27 @@ public class userInformation{
          return userName +" : "+ email +" : "+password+" : "+balance+" : "+accNumber;
    }
 
-   public void getId(){
+   public boolean getId(int accountNo){
+      boolean checkAccountNo = false;
       try {
          DBconnection createConnection = new DBconnection();
          //get hightest Id
-         ResultSet rs = createConnection.getUserInfor("Select MAX(userID) as userID from userinformation;");
-         int IdCount2 = 0;
+         ResultSet rs = createConnection.getUserInfor("SELECT userAccNo FROM userinformation;");
+         
          while(rs.next()){
                 
-            IdCount2 = Integer.parseInt(rs.getString(1));
+            int CurrentAccountNo = Integer.parseInt(rs.getString(1));
+            System.err.println("here CurrentAccountNo "+CurrentAccountNo);
+            if(CurrentAccountNo == accountNo){
+               checkAccountNo = true;
+            }
          }
-
-         IdCount = IdCount2;
          createConnection.closeConnection();
             
       } catch (Exception e) {
          
          //do nothing 
       }
+      return checkAccountNo;
    }
 }
