@@ -21,12 +21,10 @@ BankApp is a mobile application that simulates a real banking system. The applic
 ![picture of application home page](App_pictures/landing.png)
 
 ### Sign in and Sign up pages
-![picture of application home page](App_pictures/login.png)
-![picture of application home page](App_pictures/SignUp.png)
+![picture of application home page](App_pictures/login.png)  ![picture of application home page](App_pictures/SignUp.png)
 
 ### Home and Transaction Pages
-![picture of application adding task page](App_pictures/home.png)
-![picture of application adding task page](App_pictures/transctions.png)
+![picture of application adding task page](App_pictures/home.png)  ![picture of application adding task page](App_pictures/transctions.png)
 
 ## MySQL Tables
 
