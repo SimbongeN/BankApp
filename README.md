@@ -1,6 +1,6 @@
 # BankApp: A JavaFX Banking System
 
-BankApp is a mobile application that simulates a real banking system. It's built using Java and leverages JavaFX for the user interface, JDBC for database connectivity, and MySQL as the backend database.
+BankApp is a mobile application that simulates a real banking system. The application was built using Java and leverages JavaFX for the user interface, JDBC for database connectivity, and MySQL as the backend database. Through this project, I gained hands-on experience in implementing user authentication features, allowing users to securely log in using their credentials. I also learned about the intricacies of database management and the importance of robust security measures in financial applications and systems.I learnt concepts such as combination of hashing and salting techniques/algorithems in storing sensetive user information on database systems, In this application I used a SHA-3 (Secure Hashing algorithem) together with a salting technique for storing of user passwords. This project not only enhanced my technical skills but also provided me with valuable insights into the design and development of user-centric software solutions.
 
 ## Features Implemented
 
@@ -16,19 +16,17 @@ BankApp is a mobile application that simulates a real banking system. It's built
     - JDBC is used to connect to the MySQL database.
     - Database schema includes tables for users, accounts, and transactions.
 
-## Features to Be Implemented
+## APP OVERVIEW 
+### Landing page
+![picture of application home page](App_pictures/landing.png)
 
-1. **Forget Me Button**:
-    - Implement the "Forget Me" functionality.
-    - When users click this button, they should receive an email with instructions on how to delete their account or personal data.
+### Sign in and Sign up pages
+![picture of application home page](App_pictures/login.png)
+![picture of application home page](App_pictures/signUp.png)
 
-2. **Remember Me (Password Method)**:
-    - Allow users to choose the "Remember Me" option during login.
-    - Implement session management to keep users logged in across sessions.
-
-3. **Terms and Conditions (TnC) Page**:
-    - Create an FXML page that displays the terms and conditions.
-    - Users should be able to view and accept the TnC before using the app.
+### Home and Transaction Pages
+![picture of application adding task page](App_pictures/home.png)
+![picture of application adding task page](App_pictures/transctions.png)
 
 ## MySQL Tables
 
@@ -39,6 +37,7 @@ BankApp is a mobile application that simulates a real banking system. It's built
         - `username`
         - `email`
         - `password` (hashed)
+        - `saltValue`
         - Additional fields as needed (e.g., name, address)
 
 2. **Account_information**:
@@ -48,7 +47,7 @@ BankApp is a mobile application that simulates a real banking system. It's built
         - `user_id` (foreign key referencing `userinformation`)
         - `account_number`
         - `balance`
-        - Additional fields as needed (e.g., account type, transaction history)
+        - `Transactions`
 
 ## How to Get Started
 
