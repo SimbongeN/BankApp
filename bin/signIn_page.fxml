@@ -53,10 +53,6 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></TextField>
-                  <RadioButton fx:id="rememberBtn" layoutX="14.0" layoutY="206.0" mnemonicParsing="false" text="Remember me ">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></RadioButton>
                   <Button layoutX="51.0" layoutY="236.0" mnemonicParsing="false" onAction="#signIn_button" prefHeight="43.0" prefWidth="212.0" style="-fx-background-color: black; -fx-background-radius: 10px;" text="SIGN IN" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
