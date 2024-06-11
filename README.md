@@ -1,6 +1,12 @@
 # BankApp: A JavaFX Banking System
 
-BankApp is a mobile application that simulates a real banking system. The application was built using Java and leverages JavaFX for the user interface, JDBC for database connectivity, and MySQL as the backend database. Through this project, I gained hands-on experience in implementing user authentication features, allowing users to securely log in using their credentials. I also learned about the intricacies of database management and the importance of robust security measures in financial applications and systems.I learnt concepts such as combination of hashing and salting techniques/algorithems in storing sensetive user information on database systems, In this application I used a SHA-3 (Secure Hashing algorithem) together with a salting technique for storing of user passwords. This project not only enhanced my technical skills but also provided me with valuable insights into the design and development of user-centric software solutions.
+BankApp is an innovative mobile application designed to emulate the functionalities of a real-world banking system. Developed in Java, it features a user-friendly interface crafted with JavaFX, ensuring seamless user interactions. The application establishes secure database connections using JDBC and stores data in a MySQL database, providing a stable and reliable backend.
+
+A key focus of the project was to implement robust user authentication mechanisms. Users can confidently log in with their credentials, knowing their data is protected. The project was also an educational journey into database management and the critical role of security in financial software.
+
+To safeguard sensitive user information, the application employs a combination of advanced cryptographic techniques. Passwords are stored using SHA-3 (Secure Hash Algorithm 3), enhanced with salting to thwart unauthorized access attempts. This approach to security underscores the application’s commitment to protecting user privacy.
+
+Overall, the BankApp project was a valuable learning experience, significantly bolstering technical expertise and offering deep insights into designing software that prioritizes user needs and security.
 
 ## Features Implemented
 
